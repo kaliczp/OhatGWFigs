@@ -11,9 +11,10 @@ GWmaize <- t(GWmaizeraw[["GW"]])
 colnames(GWmaize) <- GWmaizeraw$Year
 
 par(mar = c(5.1,4.1,1.1,4.1), las = 2)
-barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n")
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n")
 axis(4, at = seq(0,100, by = 20))
 grid(nx=NA, ny = NULL)
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n", add = TRUE)
 par(new = TRUE)
 barplot(GWmaize, ylim = c(14,0),
         xaxt = "n", yaxt = "n")
