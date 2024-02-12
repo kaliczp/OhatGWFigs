@@ -17,4 +17,4 @@ grid(nx=NA, ny = NULL)
 par(new = TRUE)
 barplot(GWmaize, ylim = c(14,0),
         xaxt = "n", yaxt = "n")
-axis(2, at = 0:7)
+axis(2, at = seq(0,8,by = 2))
