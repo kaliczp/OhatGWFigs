@@ -10,10 +10,10 @@ colnames(MaizeSoil) <- GWmaizeraw$Year
 GWmaize <- t(GWmaizeraw[["GW"]])
 colnames(GWmaize) <- GWmaizeraw$Year
 
-gwcolors <- c("#2c7bb6", # blueish
-              "#d7191c", # dark
-              "#fdae61", # lighter
-              "#ffffbf" # lightest
+gwcolors <- c("#4575b4", # blueish
+              "#d73027", # dark
+              "#f46d43", # lighter
+              "#fdae61" # lightest
               )
 
 png("Fig4MaizeVSGW.png", width = 90, height = 60, units = "mm", pointsize = 7, res = 300)
@@ -22,10 +22,10 @@ par(mar = c(3.1,4.1,0.6,4.1), las = 2)
 barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n", col = NA)
 axis(4, at = seq(0,100, by = 20))
 grid(nx=NA, ny = NULL)
-barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", add = TRUE, col = gwcolors[-1])
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", add = TRUE, col = gwcolors[-1], border = NA)
 mtext("Maize yield increase [%]", side = 4, line = 3, at = 50, las = 3)
 par(new = TRUE)
-barplot(GWmaize, ylim = c(14,0),
+barplot(GWmaize, ylim = c(14,0), border = NA,
         xaxt = "n", yaxt = "n", col = gwcolors[1])
 axis(2, at = seq(0,8,by = 2))
 mtext("GWL [m below surface]", side = 2, line = 3, at = 4, las = 3)
