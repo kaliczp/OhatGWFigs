@@ -10,12 +10,18 @@ colnames(MaizeSoil) <- GWmaizeraw$Year
 GWmaize <- t(GWmaizeraw[["GW"]])
 colnames(GWmaize) <- GWmaizeraw$Year
 
+gwcolors <- c("#2c7bb6", # blueish
+              "#d7191c", # dark
+              "#fdae61", # lighter
+              "#ffffbf" # lightest
+              )
+
 par(mar = c(5.1,4.1,1.1,4.1), las = 2)
-barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n")
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n", col = NA)
 axis(4, at = seq(0,100, by = 20))
 grid(nx=NA, ny = NULL)
-barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n", add = TRUE)
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", add = TRUE, col = gwcolors[-1])
 par(new = TRUE)
 barplot(GWmaize, ylim = c(14,0),
-        xaxt = "n", yaxt = "n")
+        xaxt = "n", yaxt = "n", col = gwcolors[1])
 axis(2, at = seq(0,8,by = 2))
