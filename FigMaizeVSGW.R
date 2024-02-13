@@ -16,6 +16,7 @@ gwcolors <- c("#2c7bb6", # blueish
               "#ffffbf" # lightest
               )
 
+png("Fig4MaizeVSGW.png", width = 90, height = 60, units = "mm", pointsize = 7, res = 300)
 pdf("Fig4MaizeVSGW.pdf", width = 90 / 25.4, height = 60 / 25.4, pointsize = 7)
 par(mar = c(3.1,4.1,0.6,4.1), las = 2)
 barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", type = "n", col = NA)
