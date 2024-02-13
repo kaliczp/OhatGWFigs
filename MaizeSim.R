@@ -8,8 +8,8 @@ colnames(Maizesim) <- maizeraw$Year
 
 maizecolors <- gwcolors[2:3] # dark and lighter from FigMaizeVSGW.R
 
-par(mar = c(3.1,4.1,0.6,4.1), las = 2)
+par(mar = c(3.1,4.6,0.6,4.1), las = 2)
 barplot(Maizesim, beside = TRUE, ylim = c(0,9), col = NA)
 grid(nx=NA, ny = NULL)
 barplot(Maizesim, beside = TRUE, ylim = c(0,9), col = maizecolors)
-mtext("Maize yield [t ha-1]", side = 2, line = 3, las = 3, at = 4)
+mtext(expression(paste("Maize yield [", t %.% ha^{-1}, "]")), side = 2, line = 3, las = 3, at = 4)
