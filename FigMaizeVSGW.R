@@ -16,8 +16,12 @@ gwcolors <- c("#4575b4", # blueish
               "#fdae61" # lightest
               )
 
+produce <- "pdf" # or "png"
+if(produce == "png") {
 png("Fig4MaizeVSGW.png", width = 90, height = 60, units = "mm", pointsize = 7, res = 300)
+} else {
 pdf("Fig4MaizeVSGW.pdf", width = 90 / 25.4, height = 60 / 25.4, pointsize = 7)
+}
 par(mar = c(3.1,4.1,0.6,4.1), las = 2)
 barplot(matrix(NA ,ncol = ncol(MaizeSoil), nrow = nrow(MaizeSoil)), beside = TRUE, ylim=c(0,140),axes=FALSE)
 axis(4, at = seq(0,100, by = 20))
