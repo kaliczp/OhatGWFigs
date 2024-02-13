@@ -1,0 +1,5 @@
+library(readxl)
+gwmeassim <- as.data.frame(read_excel("talajvizszint_modell_eredmeny_GS_cikkbe.xlsx", range = "Munka1!L3:R14612", col_names = FALSE))
+colnames(gwmeassim) <- c("Date", "M2680", "S2680", "M2683", "S2683", "M2684", "S2684")
+library(xts)
+gwmeassim.xts <- xts(gwmeassim[,-1], as.Date(gwmeassim[,1]))
