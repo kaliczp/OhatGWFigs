@@ -4,8 +4,11 @@ colnames(gwraw) <- c("Date", "gw2680", "gw2683", "gw2684")
 library(xts)
 gw.xts <- xts(gwraw[, -1], gwraw[,1])
 
-plot.zoo(gw.xts$gw2680, ylim = c(-6,0), xaxs = "i", type = "n",
+par(mar = c(2.1,4.1,0.6,0.6), las = 1)
+plot.zoo(gw.xts$gw2680, ylim = c(-6,0), type = "n",
+         xaxs = "i", yaxs = "i",
          xlab = "", ylab = "GWL [m below ground surface]")
-lines(as.zoo(gw.xts$gw2680))
-lines(as.zoo(gw.xts$gw2683))
-lines(as.zoo(gw.xts$gw2684))
+grid(nx=NA, ny = NULL)
+lines(as.zoo(gw.xts$gw2680), lwd = 2, col = gwcolors[1])
+lines(as.zoo(gw.xts$gw2683), lwd = 2, col = gwcolors[2])
+lines(as.zoo(gw.xts$gw2684), lwd = 2, col = gwcolors[3])
