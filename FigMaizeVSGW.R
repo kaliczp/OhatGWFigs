@@ -30,5 +30,4 @@ barplot(GWmaize, ylim = c(14,0),
 axis(2, at = seq(0,8,by = 2))
 mtext("GWL [m below surface]", side = 2, line = 3, at = 4, las = 3)
 legend(1.8, 5, legend = c("GWL", "loam", "clay", "sand"), fill = gwcolors,  bg = "white", cex = 0.8)
-box()
 dev.off()
