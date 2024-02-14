@@ -33,5 +33,5 @@ barplot(GWmaize, ylim = c(14,0), border = NA,
         xaxt = "n", yaxt = "n", col = gwcolors[1])
 axis(2, at = seq(0,8,by = 2))
 mtext("GWL [m below surface]", side = 2, line = 3, at = 4, las = 3)
-legend(1.8, 5, legend = c("GWL", "loam", "clay", "sand"), fill = gwcolors, border = gwcolors,  bg = "white", cex = 0.8)
+legend(x = "bottomleft", legend = c("GWL", "loam", "clay", "sand"), fill = gwcolors, border = gwcolors, cex = 0.8, inset = c(-0.17, 0), xpd = TRUE)
 dev.off()
