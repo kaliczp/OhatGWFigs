@@ -13,13 +13,18 @@ png("FigS2GwMeasSim_2col.png", width = 190, height = 60, units = "mm", pointsize
 } else {
     pdf("FigS2GwMeasSim_2col.pdf", width = 190 / 25.4, height = 120 / 25.4, pointsize = 7)
 }
-par(oma = c(2.1,4.1,0.6,0.6), mar = c(0,0,0,0), las = 1, mfrow = c(3, 1))
+par(oma = c(2.1,0,0.6,0.6), mar = c(0,4.1,0,0), las = 1, mfrow = c(3, 1))
+actualylim <- c(3.5,-0.5)
 for(nrgwwell in c(2680, 2683, 2684)) {
+    if(nrgwwell > 2680) {
+        actualylim <- actualylim + 1
+    }
 plot.zoo(gwmeassim.xts[, paste0("M",nrgwwell)], type = "n",
          xaxs = "i",
          xaxt = "n",
-         ylim = c(3,0),
+         ylim = actualylim,
          xlab = "", ylab = "GWL [m below ground surface]")
+    legend("topleft", legend = paste(nrgwwell, "   "), col = "lightgray")
 grid(nx=NA, ny = NULL)
 points(as.zoo(gwmeassim.xts[, paste0("M",nrgwwell)]), pch = 16, col = "lightgray")
 lines(as.zoo(gwmeassim.xts[, paste0("S",nrgwwell)]), lwd = 2, col = gwcolors[1])
