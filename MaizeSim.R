@@ -20,5 +20,5 @@ grid(nx=NA, ny = NULL)
 barplot(Maizesim, beside = TRUE, ylim = c(0,9), col = maizecolors, add = TRUE, border = NA)
 mtext(expression(paste("Maize yield [", t %.% ha^{-1}, "]")), side = 2, line = 2.3, las = 3, at = 4)
 legend(3, 8.9, legend = c("Statistical county-level data", "Simulated for the loam profile"),
-       fill = maizecolors,  bg = "white", cex = 0.8)
+       fill = maizecolors, border = maizecolors,  bg = "white", cex = 0.8)
 dev.off()
