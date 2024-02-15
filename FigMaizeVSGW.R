@@ -2,6 +2,11 @@ library(readxl)
 GWmaizeraw <- as.data.frame(read_excel("WG3_abra-adatok_Peternek.xlsx", range = "abra3!B5:F24", col_names = FALSE))
 colnames(GWmaizeraw) <- c("Year", "GW", "Loam", "Clay","Sand")
 
+## Prec
+PrecYearRaw <- as.data.frame(read_excel("Ohat_yearly_PREC.xlsx"))
+PrecYear <- t(PrecYearRaw[,2])
+colnames(PrecYear) <- PrecYearRaw[,1]
+
 ## Soil
 MaizeSoil <- t(GWmaizeraw[,c("Loam", "Clay", "Sand")])
 colnames(MaizeSoil) <- GWmaizeraw$Year
