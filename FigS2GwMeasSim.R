@@ -9,7 +9,7 @@ gwmeassim.xts <- xts(gwmeassim[,-1], as.Date(gwmeassim[,1]))
 
 produce <- "pdf" # or "png"
 if(produce == "png") {
-png("FigS2GwMeasSim_2col.png", width = 190, height = 60, units = "mm", pointsize = 7, res = 300)
+png("FigS2GwMeasSim_2col.png", width = 190, height = 120, units = "mm", pointsize = 7, res = 300)
 } else {
     pdf("FigS2GwMeasSim_2col.pdf", width = 190 / 25.4, height = 120 / 25.4, pointsize = 7)
 }

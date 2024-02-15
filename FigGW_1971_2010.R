@@ -6,7 +6,8 @@ gw.xts <- xts(gwraw[, -1], as.Date(gwraw[,1]))
 
 produce <- "pdf" # or "png"
 if(produce == "png") {
-png("Fig2GW.png", width = 90, height = 60, units = "mm", pointsize = 7, res = 300)
+    ## png("Fig2GW_1col.png", width = 90, height = 60, units = "mm", pointsize = 7, res = 300)
+    png("Fig2GW_2col.png", width = 190, height = 60, units = "mm", pointsize = 7, res = 300)
 } else {
     ## pdf("Fig2GW_1col.pdf", width = 90 / 25.4, height = 60 / 25.4, pointsize = 7)
     pdf("Fig2GW_2col.pdf", width = 190 / 25.4, height = 60 / 25.4, pointsize = 7)
