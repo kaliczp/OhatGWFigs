@@ -29,9 +29,9 @@ grid(nx=NA, ny = NULL)
 barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", add = TRUE, col = gwcolors[-1], border = NA)
 mtext("Maize yield increase [%]", side = 4, line = 3, at = 50, las = 3)
 par(new = TRUE)
-barplot(GWmaize, ylim = c(14,0), border = NA,
+barplot(GWmaize, ylim = c(3.5,0), border = NA,
         xaxt = "n", yaxt = "n", col = gwcolors[1])
-axis(2, at = seq(0,8,by = 2))
-mtext("GWL [m below surface]", side = 2, line = 3, at = 4, las = 3)
+axis(2, at = seq(0,2,by = 0.5))
+mtext("GWL [m below surface]", side = 2, line = 3, at = 1, las = 3)
 legend(x = "bottomleft", legend = c("GWL", "loam", "clay", "sand"), fill = gwcolors, border = gwcolors, cex = 0.8, inset = c(-0.17, 0), xpd = TRUE)
 dev.off()
