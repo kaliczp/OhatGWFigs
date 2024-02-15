@@ -9,7 +9,7 @@ colnames(PrecYear) <- PrecYearRaw[,1]
 
 ## Soil
 MaizeSoil <- t(GWmaizeraw[,c("Loam", "Clay", "Sand")])
-colnames(MaizeSoil) <- GWmaizeraw$Year
+# colnames(MaizeSoil) <- GWmaizeraw$Year
 
 ## gw
 GWmaize <- t(GWmaizeraw[["GW"]])
@@ -18,25 +18,31 @@ colnames(GWmaize) <- GWmaizeraw$Year
 gwcolors <- c("#4575b4", # blueish
               "#d73027", # dark
               "#f46d43", # lighter
-              "#fdae61" # lightest
+              "#fdae61", # lightest
+              "#abd9e9" # light blueish
               )
 
 produce <- "pdf" # or "png"
 if(produce == "png") {
-png("Fig4MaizeVSGW.png", width = 90, height = 60, units = "mm", pointsize = 7, res = 300)
+png("Fig4MaizeVSGW.png", width = 90, height = 110, units = "mm", pointsize = 7, res = 300)
 } else {
-pdf("Fig4MaizeVSGW.pdf", width = 90 / 25.4, height = 60 / 25.4, pointsize = 7)
+pdf("Fig4MaizeVSGW.pdf", width = 90 / 25.4, height = 110 / 25.4, pointsize = 7)
 }
-par(mar = c(3.1,4.1,0.6,4.1), las = 2)
-barplot(matrix(NA ,ncol = ncol(MaizeSoil), nrow = nrow(MaizeSoil)), beside = TRUE, ylim=c(0,140),axes=FALSE)
+layout(matrix(1:2,ncol=1),heights=c(2,1))
+par(mar = c(0,4.1,0.6,4.1), las = 2)
+barplot(matrix(NA ,ncol = ncol(MaizeSoil), nrow = nrow(MaizeSoil)), beside = TRUE, ylim=c(0,180),axes=FALSE)
 axis(4, at = seq(0,100, by = 20))
-grid(nx=NA, ny = NULL)
-barplot(MaizeSoil, beside = TRUE, ylim = c(0, 140), yaxt = "n", add = TRUE, col = gwcolors[-1], border = NA)
+grid(nx=NA, ny = 9)
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 180), yaxt = "n", add = TRUE, col = gwcolors[2:4], border = NA, axes = FALSE)
 mtext("Maize yield increase [%]", side = 4, line = 3, at = 50, las = 3)
 par(new = TRUE)
-barplot(GWmaize, ylim = c(3.5,0), border = NA,
+barplot(PrecYear, ylim = c(1800,0), border = NA,
         xaxt = "n", yaxt = "n", col = gwcolors[1])
-axis(2, at = seq(0,2,by = 0.5))
+axis(2, at = seq(0,1000,by = 100))
+mtext(expression(paste("PREC [", mm %.% year^{-1}, "]")), side = 2, line = 2.8, at = 500, las = 3)
+par(mar = c(3.5,4.1,0,4.1), las = 2)
+barplot(GWmaize, ylim = c(2,0), border = NA,
+        , col = gwcolors[5])
 mtext("GWL [m below surface]", side = 2, line = 3, at = 1, las = 3)
-legend(x = "bottomleft", legend = c("GWL", "loam", "clay", "sand"), fill = gwcolors, border = gwcolors, cex = 0.8, inset = c(-0.17, 0), xpd = TRUE)
+legend(x = "bottomright", legend = c("PREC", "loam", "clay", "sand", "GWL"), fill = gwcolors, border = gwcolors, inset = c(-0.16, -0.05), xpd = TRUE)
 dev.off()
