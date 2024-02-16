@@ -28,21 +28,21 @@ png("Fig4MaizeVSGW.png", width = 90, height = 110, units = "mm", pointsize = 7, 
 } else {
 pdf("Fig4MaizeVSGW.pdf", width = 90 / 25.4, height = 110 / 25.4, pointsize = 7)
 }
-layout(matrix(1:2,ncol=1),heights=c(2,1))
+layout(matrix(1:2,ncol=1),heights=c(3,1))
 par(mar = c(0,4.1,0.6,4.1), las = 2)
-barplot(matrix(NA ,ncol = ncol(MaizeSoil), nrow = nrow(MaizeSoil)), beside = TRUE, ylim=c(0,180),axes=FALSE)
+barplot(matrix(NA ,ncol = ncol(MaizeSoil), nrow = nrow(MaizeSoil)), beside = TRUE, ylim=c(0,120),axes=FALSE)
 axis(4, at = seq(0,100, by = 20))
-grid(nx=NA, ny = 9)
-barplot(MaizeSoil, beside = TRUE, ylim = c(0, 180), yaxt = "n", add = TRUE, col = gwcolors[2:4], border = NA, axes = FALSE)
+grid(nx=NA, ny = NULL)
+barplot(MaizeSoil, beside = TRUE, ylim = c(0, 120), yaxt = "n", add = TRUE, col = gwcolors[2:4], border = NA, axes = FALSE)
 mtext("Maize yield increase [%]", side = 4, line = 3, at = 50, las = 3)
 par(new = TRUE)
-barplot(PrecYear, ylim = c(1800,0), border = NA,
+barplot(PrecYear, ylim = c(3000,0), border = NA, space = 1,
         xaxt = "n", yaxt = "n", col = gwcolors[1])
-axis(2, at = seq(0,1000,by = 100))
+axis(2, at = seq(0,1000,by = 250))
 mtext(expression(paste("PREC [", mm %.% year^{-1}, "]")), side = 2, line = 2.8, at = 500, las = 3)
 par(mar = c(3.5,4.1,0,4.1), las = 2)
-barplot(GWmaize, ylim = c(2,0), border = NA,
+barplot(GWmaize, ylim = c(2,0), border = NA, space = 1,
         , col = gwcolors[5])
 mtext("GWL [m below surface]", side = 2, line = 3, at = 1, las = 3)
-legend(x = "bottomright", legend = c("PREC", "loam", "clay", "sand", "GWL"), fill = gwcolors, border = gwcolors, inset = c(-0.16, -0.05), xpd = TRUE)
+legend(x = "bottomright", legend = c("PREC", "loam", "clay", "sand", "GWL"), fill = gwcolors, border = gwcolors, inset = c(-0.17, -0.08), xpd = TRUE, cex = 0.9)
 dev.off()
